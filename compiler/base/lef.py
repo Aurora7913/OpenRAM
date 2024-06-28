@@ -21,8 +21,6 @@ class lef:
     This is inherited by the sram_1bank class.
     """
     def __init__(self, layers):
-        # LEF db units per micron
-        self.lef_units = 2000
         # These are the layers of the obstructions
         self.lef_layers = layers
         # Round to ensure float values are divisible by 0.0025 (the manufacturing grid)
@@ -137,9 +135,6 @@ class lef:
         self.lef.write("NAMESCASESENSITIVE ON ;\n")
         self.lef.write("BUSBITCHARS \"[]\" ;\n")
         self.lef.write("DIVIDERCHAR \"/\" ;\n")
-        self.lef.write("UNITS\n")
-        self.lef.write("  DATABASE MICRONS {0} ;\n".format(self.lef_units))
-        self.lef.write("END UNITS\n")
 
         self.lef.write("{0}MACRO {1}\n".format(self.indent, self.name))
         self.indent += "   "
