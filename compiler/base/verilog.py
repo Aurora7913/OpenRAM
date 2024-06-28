@@ -83,7 +83,7 @@ class verilog:
         self.vf.write("  parameter RAM_DEPTH = 1 << ADDR_WIDTH;\n")
         self.vf.write("  // FIXME: This delay is arbitrary.\n")
         self.vf.write("  parameter DELAY = 3 ;\n")
-        self.vf.write("  parameter VERBOSE = 1 ; //Set to 0 to only display warnings\n")
+        self.vf.write("  parameter VERBOSE = 0 ; //Set to 1 to print every read and write\n")
         self.vf.write("  parameter T_HOLD = 1 ; //Delay to hold dout value after posedge. Value is arbitrary\n")
         self.vf.write("\n")
 
