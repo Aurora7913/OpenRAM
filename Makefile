@@ -86,7 +86,9 @@ $(SRAM_LIB_DIR): check-pdk-root
 	@git -C $(SRAM_LIB_DIR) fetch
 	@git -C $(SRAM_LIB_DIR) checkout $(SRAM_LIB_GIT_COMMIT)
 
-sky130-install: $(SRAM_LIB_DIR)
+sky130-install:
+	@[ -d $(SRAM_LIB_DIR) ] || \
+		(echo "Warning: $(SRAM_LIB_DIR) not found!! Run make $(SRAM_LIB_DIR) first." &&  false)
 	@[ -d $(PDK_ROOT)/sky130A ] || \
 		(echo "Warning: $(PDK_ROOT)/sky130A not found!! Run make sky130-pdk first." &&  false)
 	@[ -d $(PDK_ROOT)/skywater-pdk ] || \
