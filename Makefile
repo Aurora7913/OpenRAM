@@ -115,7 +115,7 @@ $(INSTALL_BASE)/gds_lib: $(GDS_FILES)
 	@echo "Setting up GDS cell library for OpenRAM."
 	@echo "=================================================================="
 	mkdir -p $@
-	cp -va $? $@
+	cp -a $? $@
 	@echo "=================================================================="
 	@echo
 
@@ -124,7 +124,7 @@ $(INSTALL_BASE)/mag_lib: $(MAG_FILES)
 	@echo "Setting up MAG files for OpenRAM."
 	@echo "=================================================================="
 	mkdir -p $@
-	@cp -va $? $@
+	@cp -a $? $@
 	@echo
 	cp -f $(MAGICRC_FILE) $(INSTALL_BASE)/tech/.magicrc
 	cp -f $(MAGICRC_FILE) $(INSTALL_BASE)/mag_lib/.magicrc
@@ -137,7 +137,7 @@ $(INSTALL_BASE)/maglef_lib: $(MAGLEF_FILES)
 	@echo "=================================================================="
 	mkdir -p $@
 	@for SP in $?; do \
-		cp -va $$SP $@/$$(basename $$SP .$(MAGLEF_SUFFIX)).mag; \
+		cp -a $$SP $@/$$(basename $$SP .$(MAGLEF_SUFFIX)).mag; \
 	done
 	@echo
 	cp -f $(MAGICRC_FILE) $(INSTALL_BASE)/maglef_lib/.magicrc
@@ -151,7 +151,7 @@ $(INSTALL_BASE)/lvs_lib: $(filter %.$(SPICE_LVS_SUFFIX),$(ALL_SPICE_FILES))
 	@echo "=================================================================="
 	mkdir -p $@
 	@for SP in $?; do \
-		cp -va $$SP $@/$$(basename $$SP .$(SPICE_LVS_SUFFIX)).sp; \
+		cp -a $$SP $@/$$(basename $$SP .$(SPICE_LVS_SUFFIX)).sp; \
 	done
 	@echo "=================================================================="
 	@echo
@@ -162,7 +162,7 @@ $(INSTALL_BASE)/calibre_lvs_lib: $(filter %.$(SPICE_CALIBRE_SUFFIX),$(ALL_SPICE_
 	@echo "=================================================================="
 	mkdir -p $@
 	@for SP in $?; do \
-		cp -va $$SP $@/$$(basename $$SP .$(SPICE_CALIBRE_SUFFIX)).sp; \
+		cp -a $$SP $@/$$(basename $$SP .$(SPICE_CALIBRE_SUFFIX)).sp; \
 	done
 	@echo "=================================================================="
 	@echo
@@ -173,7 +173,7 @@ $(INSTALL_BASE)/klayout_lvs_lib: $(filter %.$(SPICE_KLAYOUT_SUFFIX),$(ALL_SPICE_
 	@echo "=================================================================="
 	mkdir -p $@
 	@for SP in $?; do \
-		cp -va $$SP $@/$$(basename $$SP .$(SPICE_KLAYOUT_SUFFIX)).sp; \
+		cp -a $$SP $@/$$(basename $$SP .$(SPICE_KLAYOUT_SUFFIX)).sp; \
 	done
 	@echo "=================================================================="
 	@echo
@@ -185,12 +185,12 @@ $(INSTALL_BASE)/sp_lib: $(filter-out %.$(SPICE_LVS_SUFFIX) %.$(SPICE_CALIBRE_SUF
 	@echo "=================================================================="
 	mkdir -p $@
 	@for SP in $(filter-out %.$(SPICE_BASE_SUFFIX),$?); do \
-		cp -va $$SP $@/$$(basename $$SP .$(SPICE_SUFFIX)).sp; \
+		cp -a $$SP $@/$$(basename $$SP .$(SPICE_SUFFIX)).sp; \
 	done
 	@echo
 	@echo "Overwriting some cells with base version."
 	@for SP in $(filter %.$(SPICE_BASE_SUFFIX),$?); do \
-		cp -va $$SP $@/$$(basename $$SP .$(SPICE_BASE_SUFFIX)).sp; \
+		cp -a $$SP $@/$$(basename $$SP .$(SPICE_BASE_SUFFIX)).sp; \
 	done
 	@echo "=================================================================="
 	@echo
